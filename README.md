@@ -1,26 +1,20 @@
-# Project 2 – Hybrid Cloud Backend Architecture with Private RDS
+# Project 1 – Public Web Architecture on AWS (EC2 + Apache)
 
 ## Overview
-Simulates a backend cloud environment with a public EC2 server securely connecting to a private PostgreSQL RDS instance. All traffic routed via AWS VPC networking components.
+Deployed a public-facing Apache web server using Amazon EC2 within a custom VPC and public subnet. Designed for quick access and real-world exposure to AWS fundamentals.
 
 ## Key Features
-- VPC with public and private subnets
-- DB Subnet Group for RDS
-- EC2 (Amazon Linux 2) in public subnet
-- PostgreSQL RDS (v17) in private subnet
-- NAT Gateway + Internet Gateway
-- Security Groups for strict inbound/outbound control
-
-## Troubleshooting Wins
-- CIDR overlap fix
-- RDS access via SSL using `sslmode=require`
-- Password auth and user conflicts resolved
-- EC2 Security Group recreated after deletion
+- Amazon EC2 (Amazon Linux 2)
+- Apache HTTP server setup via terminal
+- Public subnet with Internet Gateway
+- Port 22 and 80 open via Security Groups
 
 ## Outcome
-Connected EC2 to private RDS securely and confirmed psql shell access. Architecture is scalable, secure, and production-similar.
+Successfully hosted and accessed Apache welcome page from the internet. Built VPC manually and deployed EC2 into a secure, internet-accessible environment.
 
-## Example Command
+## Commands Used
 ```bash
-PGPASSWORD='yourpassword' psql "host=<rds-endpoint> user=<username> dbname=postgres sslmode=require"
+sudo yum install -y httpd
+sudo systemctl start httpd
+sudo systemctl enable httpd
 ```
